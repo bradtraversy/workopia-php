@@ -1,0 +1,16 @@
+{
+  "name": "bradtraversy/workopia-php",
+  "description": "Job listing application",
+  "authors": [
+    {
+      "name": "Brad Traversy",
+      "email": "support@traversymedia.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
