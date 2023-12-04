@@ -1,6 +1,6 @@
 # Workopia
 
-Workopia is a job listings website built with vanilla PHP. It includes and a custom Laravel-like router and project structure using namespaces. This project was built from the groud up in my PHP From Scratch course. It highlights how to structure a PHP project without using any frameworks or libraries.
+Workopia is a job listing website from my [PHP From Scratch course](https://www.traversymedia.com/php-from-scratch). It includes a custom Laravel-like router, controller classes, views, a database layer and a project structure using namespaces and PSR-4 autoloading. It highlights how to structure a PHP project without using any frameworks or libraries.
 
 ![Workopia](/public/images/screen.jpg)
 
@@ -50,7 +50,7 @@ DocumentRoot "/Applications/MAMP/htdocs/workopia/public"
 
 ##### Laragon
 
-If you are using Laragon, you can set right click the icon in the system tray and go to `Apache > sites-enabled > auto.workopia.test.conf`. Your file may be named differently.
+If you are using Laragon, you can set right-click the icon in the system tray and go to `Apache > sites-enabled > auto.workopia.test.conf`. Your file may be named differently.
 
 You can then set the document root. Here is an example:
 
@@ -78,11 +78,11 @@ This would load the `index` method in the `App/controllers/ListingController.php
 
 #### Authorization Middleware
 
-You can pass in middleware for authorization. This is an array of roles. If you want the route to be accessbile only to logged in users, you would add the `auth` role:
+You can pass in middleware for authorization. This is an array of roles. If you want the route to be accessible only to logged-in users, you would add the `auth` role:
 
 `$router->get('/listings/create', 'ListingController@create', ['auth']);`
 
-If you only want non-logged in users to access the route, you would add the `guest` role:
+If you only want non-logged-in users to access the route, you would add the `guest` role:
 
 `$router->get('/register', 'AuthController@register', ['guest']);`
 
@@ -132,7 +132,7 @@ This project uses namespaces for all of the classes. Here are the namespaces use
 
 The `App` directory contains all of the main application files like controllers, views, etc. Here is the directory structure:
 
-- **controllers/** - Contains all of the controllers including listings, users, home and error
+- **controllers/** - Contains all of the controllers, including listings, users, home and error
 - **views/** - Contains all of the views
 - **views/partials/** - Contains all of the partial views
 
