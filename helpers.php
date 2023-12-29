@@ -12,68 +12,42 @@ function basePath($path = '')
 }
 
 /**
- * Load a view
+ * Load a view or a partial
  * 
  * @param string $name
+ * @param string $type 'view' or 'partial'
+ * @param array $data
  * @return void
- * 
  */
-function loadView($name, $data = [])
+function load($name, $type = 'view', $data = [])
 {
-  $viewPath = basePath("App/views/{$name}.view.php");
+    $path = $type === 'partial' ? "App/views/partials/{$name}.php" : "App/views/{$name}.view.php";
+    $fullPath = basePath($path);
 
-  if (file_exists($viewPath)) {
-    extract($data);
-    require $viewPath;
-  } else {
-    echo "View '{$name} not found!'";
-  }
-}
-
-
-/**
- * Load a partial
- * 
- * @param string $name
- * @return void
- * 
- */
-function loadPartial($name, $data = [])
-{
-  $partialPath = basePath("App/views/partials/{$name}.php");
-
-  if (file_exists($partialPath)) {
-    extract($data);
-    require $partialPath;
-  } else {
-    echo "Partial '{$name} not found!'";
-  }
+    if (file_exists($fullPath)) {
+        extract($data);
+        require $fullPath;
+    } else {
+        echo ucfirst($type) . " '{$name}' not found!";
+    }
 }
 
 /**
- * Inspect a value(s)
+ * Inspect a value and optionally terminate the script
  * 
  * @param mixed $value
+ * @param bool $die
  * @return void
  */
-function inspect($value)
+function inspect($value, $die = false)
 {
   echo '<pre>';
   var_dump($value);
   echo '</pre>';
-}
 
-/**
- * Inspect a value(s) and die
- * 
- * @param mixed $value
- * @return void
- */
-function inspectAndDie($value)
-{
-  echo '<pre>';
-  die(var_dump($value));
-  echo '</pre>';
+  if ($die) {
+    die();
+  }
 }
 
 /**
